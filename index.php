@@ -1,3 +1,3 @@
 <?php
-header('http://twitter.com/twhjerne');
+header('http://twitter.com');
 exit;
