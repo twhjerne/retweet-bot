@@ -16,7 +16,7 @@ foreach ($tweets->statuses as $tweet) {
 
         if (!mysqli_num_rows($existing_tweet) && substr($tweet->text, 0, 2) != 'RT' && substr($tweet->text, 0, 1) != '@') {
             $retweet = $connection->post('statuses/retweet/' . $tweet->id);
-            $result = mysqli_query($db_conn, "INSERT INTO retweets (id, text, screen_name) VALUES ('" . $tweet->id . "','" . utf8_decode($tweet->t$
+            $result = mysqli_query($db_conn, "INSERT INTO retweets (id, text, screen_name) VALUES ('" . $tweet->id . "','" . utf8_decode($tweet->text) . "','" . utf8_decode($tweet->user->screen_name) . "')");
             $follow = $connection->post('friendships/create', array('user_id' => $tweet->user->id, 'follow' => true));
         }
 }
